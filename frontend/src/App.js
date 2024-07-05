@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> f08b347b6b16252d36a3a47a32a3f0f33857bfa0
 import './App.css';
+import Signup from './Signup';
+import Signup from './Signup';
+
 
 function App() {
   return (
+<<<<<<< HEAD
     <div className="App">
       <header className="App-header">
         <p>
@@ -17,6 +24,10 @@ function App() {
           Learn React
         </a>
       </header>
+=======
+    <div >
+      <Signup />
+>>>>>>> f08b347b6b16252d36a3a47a32a3f0f33857bfa0
     </div>
   );
 }
