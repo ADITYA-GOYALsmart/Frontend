@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaUserCircle, FaEnvelope, FaLock, FaCheckCircle, FaExclamationCircle, FaFacebook, FaGoogle, FaInstagram, FaTiktok } from 'react-icons/fa';
 import './Styles2.css';
 
+
 function SignUpPage2() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -41,13 +42,13 @@ function SignUpPage2() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-10 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-bold mb-4 text-center">Sign Up</h2>
-        <p className="text-gray-600 text-center mb-6">We Code Flame Squad Welcome's You</p>
+    <div className="w-full h-screen bg-center bg-cover" style={{ backgroundImage: `url('/Image1.jpg')` }}>
+      <div className="p-10 ml-auto rounded-lg w-96"> {/*to shift the form on right side and blended with the page  */}
+        <h2 className="mb-4 text-2xl font-bold text-center text-white">Sign Up</h2>
+        <p className="mb-6 text-center text-white">We Code Flame Squad Welcome's You</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
+            <label htmlFor="name" className="block mb-2 font-bold text-white">
               <FaUserCircle className="inline-block mr-2" />
               Name
             </label>
@@ -59,14 +60,14 @@ function SignUpPage2() {
               onChange={handleNameChange}
             />
             {nameError && (
-              <p className="text-red-500 text-sm mt-1">Name must be at least 3 characters</p>
+              <p className="mt-1 text-sm text-red-500">Name must be at least 3 characters</p>
             )}
             {name.length >= 3 && (
               <FaCheckCircle className="float-right text-green-500" />
             )}
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
+            <label htmlFor="email" className="block mb-2 font-bold text-white">
               <FaEnvelope className="inline-block mr-2" />
               Email
             </label>
@@ -78,14 +79,14 @@ function SignUpPage2() {
               onChange={handleEmailChange}
             />
             {emailError && (
-              <p className="text-red-500 text-sm mt-1">Invalid email address</p>
+              <p className="mt-1 text-sm text-red-500">Invalid email address</p>
             )}
             {!emailError && (
               <FaCheckCircle className="float-right text-green-500" />
             )}
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 font-bold mb-2">
+            <label htmlFor="password" className="block mb-2 font-bold text-white">
               <FaLock className="inline-block mr-2" />
               Password
             </label>
@@ -97,14 +98,14 @@ function SignUpPage2() {
               onChange={handlePasswordChange}
             />
             {passwordError && (
-              <p className="text-red-500 text-sm mt-1">Password must be at least 8 characters</p>
+              <p className="mt-1 text-sm text-red-500">Password must be at least 8 characters</p>
             )}
             {!passwordError && (
               <FaCheckCircle className="float-right text-green-500" />
             )}
           </div>
           <div className="mb-4">
-            <label htmlFor="confirmPassword" className="block text-gray-700 font-bold mb-2">
+            <label htmlFor="confirmPassword" className="block mb-2 font-bold text-white">
               <FaLock className="inline-block mr-2" />
               Confirm Password
             </label>
@@ -116,7 +117,7 @@ function SignUpPage2() {
               onChange={handleConfirmPasswordChange}
             />
             {confirmPasswordError && (
-              <p className="text-red-500 text-sm mt-1">Passwords don't match</p>
+              <p className="mt-1 text-sm text-red-500">Passwords don't match</p>
             )}
             {!confirmPasswordError && (
               <FaCheckCircle className="float-right text-green-500" />
@@ -125,43 +126,43 @@ function SignUpPage2() {
           <div className="flex items-center justify-between mb-4">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline"
+              className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus-shadow-outline"
             >
               Sign Up
             </button>
           </div>
-          <div className="text-center">
+          {/* <div className="text-center">
             <p className="text-gray-500">Or sign up with</p>
             <div className="flex justify-center mt-2">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline mr-2">
+              <button className="px-4 py-2 mr-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus-shadow-outline">
                 <FaFacebook className="inline-block mr-2" />
                 Facebook
               </button>
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline">
+              <button className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 focus:outline-none focus-shadow-outline">
                 <FaGoogle className="inline-block mr-2" />
                 Google
               </button>
             </div>
-          </div>
+          </div> */}
         </form>
       </div>
-      {/* <div className="absolute right-0 top-0">
-        <div className="bg-blue-500 rounded-tl-lg rounded-bl-lg p-6 shadow-md">
-          <div className="flex justify-between items-center mb-4">
-            <div className="text-white text-2xl font-bold">Flames</div>
+      {/* <div className="absolute top-0 right-0">
+        <div className="p-6 bg-blue-500 rounded-tl-lg rounded-bl-lg shadow-md">
+          <div className="flex items-center justify-between mb-4">
+            <div className="text-2xl font-bold text-white">Flames</div>
             <FaInstagram className="text-white" size={30} />
           </div>
-          <div className="text-white font-bold text-4xl mb-4">176,18</div>
-          <div className="w-full h-4 bg-gray-300 rounded-full overflow-hidden">
-            <div className="bg-yellow-500 h-4 rounded-full" style={{ width: '60%' }}></div>
+          <div className="mb-4 text-4xl font-bold text-white">176,18</div>
+          <div className="w-full h-4 overflow-hidden bg-gray-300 rounded-full">
+            <div className="h-4 bg-yellow-500 rounded-full" style={{ width: '60%' }}></div>
           </div>
-          <div className="text-white text-sm font-bold mt-2">45</div>
+          <div className="mt-2 text-sm font-bold text-white">45</div>
         </div>
-        <div className="bg-blue-300 rounded-tr-lg rounded-br-lg p-6 shadow-md mt-4">
-          <div className="text-white text-center font-bold text-lg">Your data, your rules</div>
-          <div className="text-white text-sm text-center mt-2">Your data belongs to you, and our encryption ensures that</div>
+        <div className="p-6 mt-4 bg-blue-300 rounded-tr-lg rounded-br-lg shadow-md">
+          <div className="text-lg font-bold text-center text-white">Your data, your rules</div>
+          <div className="mt-2 text-sm text-center text-white">Your data belongs to you, and our encryption ensures that</div>
         </div>
-        <div className="absolute right-0 bottom-0 bg-blue-100 rounded-tr-lg rounded-br-lg p-6 shadow-md">
+        <div className="absolute bottom-0 right-0 p-6 bg-blue-100 rounded-tr-lg rounded-br-lg shadow-md">
           <FaTiktok className="text-black" size={40} />
         </div>
       </div> */}
