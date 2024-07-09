@@ -19,8 +19,7 @@ function SignUpPage2() {
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-    setEmailError(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(event.target.value));
-    // Reg Ex => regular expression
+    setEmailError(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(event.target.value)); {/*!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(event.target.value): This is a regular expression reg ex test that checks if the input email address is valid.*/ }
   };
 
   const handlePasswordChange = (event) => {
