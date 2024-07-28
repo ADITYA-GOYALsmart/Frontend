@@ -5,39 +5,23 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import datas from "../../state/data";
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 const Form = () => {
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-
   const handleQuestions = (ArrayOfQuestions, resume, cv) => {
-    // Add your login logic here
-    // For now, let's assume the login is successful
-    navigate('/monthly', { state: { questions: ArrayOfQuestions, cv: cv, resume: resume } }); // Navigate to the dashboard page
+    navigate('/monthly', { state: { questions: ArrayOfQuestions, cv: cv, resume: resume } });
   };
 
-
-
-
   if (datas.getCookie("token") === null || datas.getCookie("token") === undefined) {
-
-    navigate('/loginForm')
+    navigate('/loginForm');
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    navigate('/loading'); // Navigate to the loading page
 
     const resumeInput = document.getElementById("resume");
     const cvInput = document.getElementById("cv");
@@ -46,6 +30,7 @@ const Form = () => {
 
     if (!resumeFile || !cvFile) {
       alert("Please select both resume and CV.");
+      navigate(-1); // Go back if there's an error
       return;
     }
 
@@ -61,25 +46,17 @@ const Form = () => {
             body: formData,
           }
         );
-        console.log("loaded");
         return await response.json();
       } catch (error) {
         console.error("Error uploading file:", error);
         alert("Error uploading file.");
-
+        navigate(-1); // Go back if there's an error
       }
     };
-
 
     const token = datas.getCookie("token");
     const resumeResponse = await uploadFile(resumeFile);
     const cvResponse = await uploadFile(cvFile);
-    console.log(resumeResponse, cvResponse);
-    console.log(JSON.stringify({
-      token: token,
-      resume: resumeResponse.pdf,
-      cv: cvResponse.pdf,
-    }));
     fetch(`${datas.url}ai/generate_questions`, {
       method: "POST",
       headers: {
@@ -94,65 +71,18 @@ const Form = () => {
     })
       .then(response => response.json())
       .then(json => {
-        console.log(json.questions);
-
-
-
-        handleQuestions(json.questions, resumeResponse.pdf,
-          cvResponse.pdf);
-
-
+        handleQuestions(json.questions, resumeResponse.pdf, cvResponse.pdf);
       })
       .catch(error => {
-        document.getElementById("response").innerText = error
+        document.getElementById("response").innerText = error;
+        navigate(-1); // Go back if there's an error
       });
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <Box m="20px">
       <Header title="Start Interview" subtitle="Enter the necessary details" />
-
       <Formik
-        // onSubmit={handleFormSubmit}
         initialValues={initialValues}
         validationSchema={checkoutSchema}
       >
@@ -166,7 +96,6 @@ const Form = () => {
           setFieldValue,
         }) => (
           <form onSubmit={handleFormSubmit}>
-
             <Box display="flex" alignItems="center" mb="20px">
               <Box mt="20px" sx={{ display: "flex", flexDirection: "column" }}>
                 <Button
@@ -177,7 +106,8 @@ const Form = () => {
                 >
                   Upload Resume (PDF)
                   <input
-                    type="file" id="resume"
+                    type="file"
+                    id="resume"
                     accept="application/pdf"
                     hidden required
                     onChange={(event) => {
@@ -193,7 +123,8 @@ const Form = () => {
                 >
                   Upload CV (PDF)
                   <input
-                    type="file" id="cv"
+                    type="file"
+                    id="cv"
                     accept="application/pdf"
                     hidden required
                     onChange={(event) => {
@@ -207,8 +138,8 @@ const Form = () => {
               <Button type="submit" color="secondary" variant="contained">
                 SAVE
               </Button>
-
-            </Box><div id="message"></div>
+            </Box>
+            <div id="response"></div>
           </form>
         )}
       </Formik>

@@ -12,6 +12,7 @@ const LoginForm = () => {
   const handleLogin = () => {
     // Add your login logic here
     // For now, let's assume the login is successful
+    console.log("on dashboard");
     navigate('/dashboard', { replace: true }); // Navigate to the dashboard page
   };     // { TO HERE } to set login button redirection to Dasboard {should be change}
 

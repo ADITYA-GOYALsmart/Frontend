@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUser, FaLock, FaPhone, FaEnvelope, FaUpload } from "react-icons/fa";
+import { MdDomain } from "react-icons/md";
 import './Signup.css';
 import data from "../../state/data";
 
@@ -105,7 +106,7 @@ const Signup = () => {
           </div>
           <div className="mb-4 input-box">
             <input type="text" placeholder='Domain' required className="text-sm text-white" id="domain" />
-            <FaPhone className='icon' />
+            <MdDomain class="icon" />
           </div>
           <div className="mb-4 input-box file-input">
             <label htmlFor="resume" className="block text-white">Resume (PDF)</label>

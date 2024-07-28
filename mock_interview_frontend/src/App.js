@@ -16,6 +16,7 @@ import Daily from "scenes/daily";
 import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
 import Admin from "scenes/admin";
+import LoadingPage from './components/loadingPage';
 import Performance from "scenes/performance";
 import Signup from "scenes/signup/Signup";
 import LoginForm from "scenes/loginpage/Loginpage";
@@ -41,6 +42,7 @@ function App() {
               <Route path="/Edit-Profile" element={<Overview />} />
               <Route path="/cross-question" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
+              <Route path="/loading" element={<LoadingPage />} />
               {/* <Route path="/breakdown" element={<Breakdown />} /> */}
               <Route path="/Feedback" element={<Admin />} />
               <Route path="/result" element={<Performance />} />
